@@ -5,6 +5,7 @@
     align-items: center;
     position: relative;
     background-color: #fafafa;
+    z-index: 400;
 }
 #header-border{
     position: absolute;

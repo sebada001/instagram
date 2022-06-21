@@ -13,18 +13,28 @@ onAuthStateChanged(auth, (user) => {
     isAnon = user.isAnonymous;
   }
 });
+
 function SignIn() {
+  const onClickCancel = () => {
+    document.querySelector(".modal").style.display = "none";
+    document.querySelector(".black-out").style.display = "none";
+  };
+  const onSignIn = () => {
+    document.querySelector(".modal").style.display = "flex";
+    document.querySelector(".black-out").style.display = "flex";
+  };
   const navigate = useNavigate();
-  const handleClickNavigate = useCallback(
+  const handleClickNavigateAnon = useCallback(
     () => navigate("/", { replace: true }),
     [navigate]
   );
-  const handleClick = async () => {
+  const handleClickAnon = async () => {
     await anonSignIn(auth);
     if (uid !== undefined) {
-      handleClickNavigate();
+      handleClickNavigateAnon();
     }
   };
+  const handleClickEmail = async () => {};
   return (
     <div className="Sign-in">
       <div id="square-sign-in">
@@ -33,16 +43,29 @@ function SignIn() {
         <img src={bottom} className="inner-bottom-si" alt="inner-bottom" />
         <img src={top} className="inner-bottom-2-si" alt="inner-bottom-2" />
 
-        <div className="sign-in-anonymous" onClick={handleClick}>
+        <div className="sign-in-anonymous" onClick={handleClickAnon}>
           <span>Sign in anonymously</span>
         </div>
-        <div className="sign-in-email">
+        <div className="sign-in-email" onClick={onSignIn}>
           <span>Sign in email</span>
         </div>
         <div className="create-account">
           <span>Create account</span>
         </div>
       </div>
+      <div className="modal">
+        <img src={top} className="top-modal" alt="top" />
+        <img src={bottom} className="bottom-modal" alt="bottom" />
+        <label>Email:</label>
+        <input type="text" id="email-sign-in" placeholder="abc@cba.com"></input>
+        <label>Password:</label>
+        <input type="text" id="password-sign-in"></input>
+        <div>
+          <button>Sign In</button>
+          <button onClick={onClickCancel}>Cancel</button>
+        </div>
+      </div>
+      <div className="black-out"></div>
     </div>
   );
 }
