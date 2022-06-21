@@ -5,7 +5,7 @@ import left from "../svg/left.svg";
 import circle from "../svg/circle.svg";
 import pic from "../img/sc.jpg";
 import opm from "../img/opm.png";
-import "../styles/App.css";
+// import "../styles/App.css";
 
 function FeedPost() {
   return (

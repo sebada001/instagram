@@ -1,0 +1,74 @@
+
+#square-sign-in{
+    margin-top: 40px;
+    position: relative;
+    display: flex;
+    height: 450px;
+    width: 300px;
+    display: grid;
+    grid-template-areas: 
+    "t t t"
+    "l h r"
+    "l g r"
+    "l c r"
+    "b b b";
+    grid-template-columns: 5px 280px 5px;
+    grid-template-rows: 5px 150px 150px 150px 5px;
+    overflow: hidden;
+  }
+  #square-sign-in > img{
+    position: absolute;
+  }
+  .top-si, .bottom-si, .inner-bottom-si, .inner-bottom-2-si{
+    position: absolute;
+    width: 300px;;
+  }
+  .top-si{
+    grid-area: t;
+    bottom: -7px;
+    left: -10px;
+  }
+  .bottom-si{
+    grid-area: h;
+    bottom: -7px;
+    left: -10px;
+  }
+  .inner-bottom-si{
+    grid-area: g;
+    bottom: -7px;
+    left: -10px;
+  }
+  .inner-bottom-2-si{
+    grid-area: c;
+    bottom: 2px;
+    left: -10px;
+  }
+  .sign-in-anonymous, .sign-in-email, .create-account{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .sign-in-anonymous{
+    width: 100%;
+    background-color: #f0ecec;
+    grid-area: h;
+  }
+  .sign-in-email{
+    width: 100%;
+    background-color: #fafafa;
+    grid-area: g;
+  }
+  .create-account{
+    width: 100%;
+    background-color: #f0ecec;
+    grid-area: c;
+  }
+  #square-sign-in span{
+    cursor: url("../img/cursor-pointer.jpg") 0 10, pointer;
+  }
+  #square-sign-in span:hover{
+    color: rgb(81, 81, 225);
+  }
+  
+  
