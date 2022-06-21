@@ -37,6 +37,7 @@ const anonSignIn = (auth) =>
   signInAnonymously(auth)
     .then(() => {
       console.log("signed in lel");
+      return "logged";
     })
     .catch((error) => {
       console.log(error.message, error.code);
@@ -52,16 +53,20 @@ const signMeOut = () =>
     .catch((error) => {
       // An error happened.
     });
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    //available properties for user: https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    console.log(uid);
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
+
+// onAuthStateChanged(auth, (user) => {
+//   console.log("any");
+//   if (user) {
+//     //available properties for user: https://firebase.google.com/docs/reference/js/firebase.User
+//     const uid = user.uid;
+//     console.log("onauthcall");
+//     // return [true, uid];
+//     // ...
+//   } else {
+//     console.log("none");
+//     // return [false];
+//     // ...
+//   }
+// });
 
 export { anonSignIn, auth, createUser, signIn, signMeOut };

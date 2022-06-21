@@ -1,10 +1,30 @@
+import React, { useCallback } from "react";
 import bottom from "../svg/bottom.svg";
 import top from "../svg/top.svg";
-import right from "../svg/right.svg";
-import left from "../svg/left.svg";
 import { anonSignIn, signMeOut, auth } from "../firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
+let uid;
+let isAnon;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    uid = user.uid;
+    isAnon = user.isAnonymous;
+  }
+});
 function SignIn() {
+  const navigate = useNavigate();
+  const handleClickNavigate = useCallback(
+    () => navigate("/", { replace: true }),
+    [navigate]
+  );
+  const handleClick = async () => {
+    await anonSignIn(auth);
+    if (uid !== undefined) {
+      handleClickNavigate();
+    }
+  };
   return (
     <div className="Sign-in">
       <div id="square-sign-in">
@@ -12,7 +32,8 @@ function SignIn() {
         <img src={bottom} className="bottom-si" alt="bottom" />
         <img src={bottom} className="inner-bottom-si" alt="inner-bottom" />
         <img src={top} className="inner-bottom-2-si" alt="inner-bottom-2" />
-        <div className="sign-in-anonymous" onClick={() => anonSignIn(auth)}>
+
+        <div className="sign-in-anonymous" onClick={handleClick}>
           <span>Sign in anonymously</span>
         </div>
         <div className="sign-in-email">
@@ -21,13 +42,6 @@ function SignIn() {
         <div className="create-account">
           <span>Create account</span>
         </div>
-        {/* <div className="trying" >
-          
-        </div> */}
-        {/* <div className="tryingOut" onClick={() => signMeOut(auth)}>
-          {" "}
-          sign out
-        </div> */}
       </div>
     </div>
   );

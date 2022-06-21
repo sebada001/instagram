@@ -12,3 +12,6 @@
     bottom: -5px;
     width: 100%;
 }
+.sign-out{
+    cursor: url("../img/cursor-pointer.jpg") 0 10, pointer;
+}
