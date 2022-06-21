@@ -20,12 +20,12 @@ function HeaderContent(props) {
   };
   if (userUid !== undefined) {
     return (
-      <div className="sign-out" onClick={handleClick}>
+      <div className="sign-out header-right" onClick={handleClick}>
         sign out
       </div>
     );
   } else {
-    return <p>lookin slic, stranger</p>;
+    return <p className="header-right">lookin slic, stranger</p>;
   }
 }
 

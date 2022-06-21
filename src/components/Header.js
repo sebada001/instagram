@@ -12,7 +12,7 @@ function Header() {
   );
   return (
     <div id="header">
-      <img src={instalogo} alt="logo"></img>
+      <img src={instalogo} alt="logo" className="header-left"></img>
       <HeaderContent navigateOut={navigateSignOut} />
       <img src={border} alt="line" id="header-border"></img>
     </div>
