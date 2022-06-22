@@ -1,7 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useRef } from "react";
 import bottom from "../svg/bottom.svg";
 import top from "../svg/top.svg";
-import { anonSignIn, signMeOut, auth } from "../firebase/auth";
+import { anonSignIn, auth, createUser } from "../firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -15,26 +15,70 @@ onAuthStateChanged(auth, (user) => {
 });
 
 function SignIn() {
+  const modal = useRef();
+  const modalCreate = useRef();
+  const blackOut = useRef();
+  const emailCreate = useRef();
+  const passwordCreate = useRef();
   const onClickCancel = () => {
-    document.querySelector(".modal").style.display = "none";
-    document.querySelector(".black-out").style.display = "none";
+    modalCreate.current.style.display = "none";
+    modal.current.style.display = "none";
+    blackOut.current.style.display = "none";
   };
   const onSignIn = () => {
-    document.querySelector(".modal").style.display = "flex";
-    document.querySelector(".black-out").style.display = "flex";
+    modal.current.style.display = "flex";
+    blackOut.current.style.display = "flex";
+  };
+  const onCreateAcc = () => {
+    modalCreate.current.style.display = "flex";
+    blackOut.current.style.display = "flex";
+  };
+  const createAccountCheck = () => {
+    if (checkValidEmail() && checkValidPassword()) {
+      createUser(
+        auth,
+        emailCreate.current.value,
+        passwordCreate.current.value
+      ).then((arr) => {
+        uid = arr[0];
+        isAnon = arr[1];
+      });
+      if (uid !== undefined) {
+        handleClickNavigate();
+      }
+    }
+  };
+  const checkValidEmail = () => {
+    let email = emailCreate.current.value;
+    if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email)) {
+      emailCreate.current.style.border = "";
+      return true;
+    } else {
+      emailCreate.current.style.border = "1px red solid";
+      return false;
+    }
+  };
+  const checkValidPassword = () => {
+    let password = passwordCreate.current.value;
+    if (/^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)) {
+      passwordCreate.current.style.border = "";
+      return true;
+    } else {
+      passwordCreate.current.style.border = "1px red solid";
+      return false;
+    }
   };
   const navigate = useNavigate();
-  const handleClickNavigateAnon = useCallback(
-    () => navigate("/", { replace: true }),
+  const handleClickNavigate = useCallback(
+    () => navigate("/in", { replace: true }),
     [navigate]
   );
   const handleClickAnon = async () => {
     await anonSignIn(auth);
     if (uid !== undefined) {
-      handleClickNavigateAnon();
+      handleClickNavigate();
     }
   };
-  const handleClickEmail = async () => {};
   return (
     <div className="Sign-in">
       <div id="square-sign-in">
@@ -49,23 +93,46 @@ function SignIn() {
         <div className="sign-in-email" onClick={onSignIn}>
           <span>Sign in email</span>
         </div>
-        <div className="create-account">
+        <div className="create-account" onClick={onCreateAcc}>
           <span>Create account</span>
         </div>
       </div>
-      <div className="modal">
+      <div className="modal" ref={modal}>
         <img src={top} className="top-modal" alt="top" />
         <img src={bottom} className="bottom-modal" alt="bottom" />
         <label>Email:</label>
         <input type="text" id="email-sign-in" placeholder="abc@cba.com"></input>
         <label>Password:</label>
-        <input type="text" id="password-sign-in"></input>
+        <input type="password" id="password-sign-in"></input>
         <div>
           <button>Sign In</button>
           <button onClick={onClickCancel}>Cancel</button>
         </div>
       </div>
-      <div className="black-out"></div>
+      <div className="modal-create" ref={modalCreate}>
+        <img src={top} className="top-modal" alt="top" />
+        <img src={bottom} className="bottom-modal" alt="bottom" />
+        <label>Email:</label>
+        <input
+          type="text"
+          id="email-create"
+          placeholder="abc@cba.com"
+          ref={emailCreate}
+          onBlur={checkValidEmail}
+        ></input>
+        <label>Password:</label>
+        <input
+          type="password"
+          id="password-create"
+          ref={passwordCreate}
+          onClick={checkValidPassword}
+        ></input>
+        <div>
+          <button onClick={createAccountCheck}>Create Account</button>
+          <button onClick={onClickCancel}>Cancel</button>
+        </div>
+      </div>
+      <div className="black-out" ref={blackOut}></div>
     </div>
   );
 }

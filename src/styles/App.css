@@ -176,7 +176,7 @@
   cursor: url("../img/cursor-pointer.jpg") 0 10, pointer;
 }
 #square-sign-in span:hover{
-  color: rgb(81, 81, 225);
+  color: rgb(60, 60, 124) !important;
 }
 
 

@@ -7,7 +7,7 @@ import { useCallback } from "react";
 function Header() {
   const navigate = useNavigate();
   const navigateSignOut = useCallback(
-    () => navigate("/sign-in", { replace: true }),
+    () => navigate("/", { replace: true }),
     [navigate]
   );
   return (

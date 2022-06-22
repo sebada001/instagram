@@ -8,8 +8,8 @@ const RouteSwitch = () => {
     <BrowserRouter basename="/instagram">
       <Header />
       <Routes>
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/" element={<FeedPost />} />
+        <Route path="/" element={<SignIn />} />
+        <Route path="/in" element={<FeedPost />} />
       </Routes>
     </BrowserRouter>
   );
