@@ -1,20 +1,11 @@
 import React, { useCallback, useRef } from "react";
+import { anonSignIn, auth, createUser } from "../firebase/auth";
 import bottom from "../svg/bottom.svg";
 import top from "../svg/top.svg";
-import { anonSignIn, auth, createUser } from "../firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-let uid;
-let isAnon;
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    uid = user.uid;
-    isAnon = user.isAnonymous;
-  }
-});
-
-function SignIn() {
+function SignIn(props) {
+  const { userLogged, userUid, userAnon } = props;
   const modal = useRef();
   const modalCreate = useRef();
   const blackOut = useRef();
@@ -33,19 +24,14 @@ function SignIn() {
     modalCreate.current.style.display = "flex";
     blackOut.current.style.display = "flex";
   };
-  const createAccountCheck = () => {
+  const createAccountCheck = async () => {
     if (checkValidEmail() && checkValidPassword()) {
-      createUser(
+      await createUser(
         auth,
         emailCreate.current.value,
         passwordCreate.current.value
-      ).then((arr) => {
-        uid = arr[0];
-        isAnon = arr[1];
-      });
-      if (uid !== undefined) {
-        handleClickNavigate();
-      }
+      );
+      handleClickNavigate();
     }
   };
   const checkValidEmail = () => {
@@ -75,9 +61,7 @@ function SignIn() {
   );
   const handleClickAnon = async () => {
     await anonSignIn(auth);
-    if (uid !== undefined) {
-      handleClickNavigate();
-    }
+    handleClickNavigate();
   };
   return (
     <div className="Sign-in">

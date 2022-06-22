@@ -13,7 +13,7 @@ const createUser = (auth, email, password) =>
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      return [user.uid, user.isAnonymous];
+      console.log("userCreated");
     })
     .catch((error) => {
       console.log(error.code, error.message);
@@ -32,7 +32,7 @@ const signIn = (auth, email, password) =>
 const anonSignIn = (auth) =>
   signInAnonymously(auth)
     .then(() => {
-      console.log("signed in");
+      console.log("signed in anon");
     })
     .catch((error) => {
       console.log(error.message, error.code);
