@@ -5,7 +5,6 @@ import top from "../svg/top.svg";
 import { useNavigate } from "react-router-dom";
 
 function SignIn(props) {
-  const { userLogged, userUid, userAnon } = props;
   const modal = useRef();
   const modalCreate = useRef();
   const blackOut = useRef();
@@ -25,13 +24,17 @@ function SignIn(props) {
     blackOut.current.style.display = "flex";
   };
   const createAccountCheck = async () => {
-    if (checkValidEmail() && checkValidPassword()) {
-      await createUser(
-        auth,
-        emailCreate.current.value,
-        passwordCreate.current.value
-      );
-      handleClickNavigate();
+    try {
+      if (checkValidEmail() && checkValidPassword()) {
+        await createUser(
+          auth,
+          emailCreate.current.value,
+          passwordCreate.current.value
+        );
+        handleClickNavigate();
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
   const checkValidEmail = () => {
@@ -60,8 +63,12 @@ function SignIn(props) {
     [navigate]
   );
   const handleClickAnon = async () => {
-    await anonSignIn(auth);
-    handleClickNavigate();
+    try {
+      await anonSignIn(auth);
+      handleClickNavigate();
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <div className="Sign-in">

@@ -1,7 +1,7 @@
 import { auth, signMeOut } from "../firebase/auth";
 
 function HeaderContent(props) {
-  const { userLogged, userUid, userAnon, navigateOut } = props;
+  const { userLogged, navigateOut } = props;
   const handleClick = async (auth) => {
     await signMeOut(auth);
     navigateOut();
