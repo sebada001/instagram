@@ -11,15 +11,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.Post {
-  text-align: center;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  background-color: #fafafa;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -27,25 +20,7 @@
   pointer-events: none;
 }
 
-#square{
-  margin-top: 40px;
-  position: relative;
-  display: flex;
-  height: 450px;
-  width: 300px;
-  display: grid;
-  grid-template-areas: 
-  "t t t"
-  "l h r"
-  "l c r"
-  "b b b";
-  grid-template-columns: 5px 280px 5px;
-  grid-template-rows: 5px 95px 335px 5px;
-  overflow: hidden;
-}
-#square > img{
-  position: absolute;
-}
+
 .top{
   top: 0;
   left: 0px;
@@ -72,59 +47,10 @@
   left: -10px;
   width: 300px;
 }
-.title-post{
-  grid-area: h;
-  background-color: rgb(249, 245, 245);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.title-post > h3{
-  margin-left: 1rem;
-}
-.title-post > img{
-  position: absolute;
-  width: 75px;
-  font-size: 60px;
-  left: 5%;
-  z-index: 30;
-  border-radius: 50%;
-  overflow: hidden;
-}
-.profile-container{
-  position: absolute;
-  height: 70px;
-  width: 70px;
-  left: 5%;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex; 
-  align-items: center;
-   justify-content: center;
-}
-.sonic{
-  /* position: absolute;
-  left: -20px; */
-  height: 70px; 
-}
-.image-post{
-  grid-area: c;
-  background-color: rgb(0, 0, 0);
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.opm{
-  background-origin: content-box;
-  height: 100%;
-}
 
 
 /* ----------- SIGN IN ----------- */
-#square-sign-in{
+#feed-post-sign-in{
   margin-top: 40px;
   position: relative;
   display: flex;
@@ -141,7 +67,7 @@
   grid-template-rows: 5px 150px 150px 150px 5px;
   overflow: hidden;
 }
-#square-sign-in > img{
+#feed-post-sign-in > img{
   position: absolute;
 }
 .inner-bottom-2{

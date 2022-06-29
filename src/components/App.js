@@ -1,6 +1,8 @@
 import "../styles/App.css";
 import "../styles/Header.css";
 import "../styles/SignIn.css";
+import "../styles/GeneralFeed.css";
+import "../styles/FeedPost.css";
 import RouteSwitch from "../RouteSwitch";
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";

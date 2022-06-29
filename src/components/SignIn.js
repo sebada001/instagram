@@ -46,7 +46,6 @@ function SignIn(props) {
         <img src={bottom} className="bottom-si" alt="bottom" />
         <img src={bottom} className="inner-bottom-si" alt="inner-bottom" />
         <img src={top} className="inner-bottom-2-si" alt="inner-bottom-2" />
-
         <div className="sign-in-anonymous">
           <span onClick={handleClickAnon}>Sign in anonymously</span>
         </div>
@@ -68,7 +67,6 @@ function SignIn(props) {
         onClickCancel={onClickCancel}
         handleClickNavigate={handleClickNavigate}
       />
-
       <div className="black-out" ref={blackOut}></div>
     </div>
   );

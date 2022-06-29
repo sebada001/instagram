@@ -6,7 +6,7 @@ import {
 } from "../utilities/email-password-validity";
 import bottom from "../svg/bottom.svg";
 import top from "../svg/top.svg";
-
+//
 const ModalCreate = forwardRef((props, ref) => {
   const passwordCreate = useRef();
   const emailCreate = useRef();

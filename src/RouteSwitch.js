@@ -1,5 +1,5 @@
 import SignIn from "./components/SignIn";
-import FeedPost from "./components/FeedPost";
+import GeneralFeed from "./components/GeneralFeed";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 
@@ -9,7 +9,7 @@ const RouteSwitch = (props) => {
       <Header {...props} />
       <Routes>
         <Route path="/" element={<SignIn {...props} />} />
-        <Route path="/in" element={<FeedPost {...props} />} />
+        <Route path="/in" element={<GeneralFeed {...props} />} />
       </Routes>
     </BrowserRouter>
   );

@@ -6,11 +6,10 @@ import circle from "../svg/circle.svg";
 import pic from "../img/sc.jpg";
 import opm from "../img/opm.png";
 
-
 function FeedPost() {
   return (
     <div className="Post">
-      <div id="square">
+      <div id="feed-post">
         <img src={left} className="left" alt="left" />
         <img src={top} className="top" alt="top" />
         <img src={bottom} className="bottom" alt="bottom" />
@@ -23,13 +22,10 @@ function FeedPost() {
           </div>
           <h3>User - Title</h3>
         </div>
-
         <div className="image-post">
           <img src={opm} className="opm" alt="opm" />
         </div>
       </div>
-
-      <p>Save to reload.</p>
     </div>
   );
 }

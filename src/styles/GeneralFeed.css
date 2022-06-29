@@ -1,0 +1,10 @@
+.general-body{
+    width: 100%;
+    height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+.profile-area{
+    margin-top: 40px;
+}
