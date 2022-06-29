@@ -4,6 +4,7 @@ import bottom from "../svg/bottom.svg";
 import top from "../svg/top.svg";
 import { useNavigate } from "react-router-dom";
 import ModalCreate from "./ModalCreateAccount";
+import ModalSignIn from "./ModalSignIn";
 
 function SignIn(props) {
   const modal = useRef();
@@ -56,19 +57,11 @@ function SignIn(props) {
           <span onClick={onCreateAcc}>Create account</span>
         </div>
       </div>
-
-      <div className="modal-sign-in" ref={modal}>
-        <img src={top} className="top-modal" alt="top" />
-        <img src={bottom} className="bottom-modal" alt="bottom" />
-        <label>Email:</label>
-        <input type="text" id="email-sign-in" placeholder="abc@cba.com"></input>
-        <label>Password:</label>
-        <input type="password" id="password-sign-in"></input>
-        <div>
-          <button>Sign In</button>
-          <button onClick={onClickCancel}>Cancel</button>
-        </div>
-      </div>
+      <ModalSignIn
+        ref={modal}
+        onClickCancel={onClickCancel}
+        handleClickNavigate={handleClickNavigate}
+      />
       <ModalCreate
         {...props}
         ref={modalCreate}
