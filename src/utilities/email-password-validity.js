@@ -1,9 +1,19 @@
 //these functions take in 'refs' from components
 
+const checkValidUserName = (inp) => {
+  let user = inp.current.value;
+  if (/^[a-zA-Z0-9!@#$%^&*]{4,16}$/.test(user)) {
+    inp.current.style.border = "";
+    return true;
+  } else {
+    inp.current.style.border = "1px red solid";
+    return false;
+  }
+};
+
 const checkValidEmail = (inp) => {
   let email = inp.current.value;
   if (/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email)) {
-    //    \
     inp.current.style.border = "";
     return true;
   } else {
@@ -22,4 +32,4 @@ const checkValidPassword = (inp) => {
   }
 };
 
-export { checkValidEmail, checkValidPassword };
+export { checkValidEmail, checkValidPassword, checkValidUserName };

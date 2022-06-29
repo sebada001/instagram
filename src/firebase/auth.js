@@ -9,10 +9,11 @@ import {
 
 const auth = getAuth(app);
 
-const createUser = (auth, email, password) =>
+const createUser = (auth, email, password, username) =>
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      user.userName = username;
       console.log("userCreated");
     })
     .catch((error) => {
