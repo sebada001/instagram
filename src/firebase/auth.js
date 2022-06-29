@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signInAnonymously,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 const auth = getAuth(app);
@@ -13,7 +14,9 @@ const createUser = (auth, email, password, username) =>
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      user.userName = username;
+      updateProfile(user, {
+        displayName: username,
+      });
       console.log("userCreated");
     })
     .catch((error) => {

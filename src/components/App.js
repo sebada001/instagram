@@ -12,11 +12,14 @@ function App() {
   const [userLogged, setUserLogged] = useState(false);
   const [userUid, setUserUid] = useState(undefined);
   const [userAnon, setUserAnon] = useState(false);
+  const [userName, setUserName] = useState(undefined);
+
   const handleLogIn = (user) => {
-    if (user !== undefined) {
+    if (user) {
       setUserLogged(true);
       setUserUid(user.uid);
       setUserAnon(user.isAnonymous);
+      setUserName(user.displayName);
     } else {
       setUserLogged(false);
       setUserUid(undefined);
@@ -38,6 +41,7 @@ function App() {
         userLogged={userLogged}
         userUid={userUid}
         userAnon={userAnon}
+        userName={userName}
       />
     </div>
   );

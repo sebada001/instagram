@@ -2,7 +2,7 @@
 
 const checkValidUserName = (inp) => {
   let user = inp.current.value;
-  if (/^[a-zA-Z0-9!@#$%^&*]{4,16}$/.test(user)) {
+  if (/^[a-zA-Z0-9]{4,10}$/.test(user)) {
     inp.current.style.border = "";
     return true;
   } else {

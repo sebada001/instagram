@@ -24,7 +24,8 @@ const ModalCreate = forwardRef((props, ref) => {
         await createUser(
           auth,
           emailCreate.current.value,
-          passwordCreate.current.value
+          passwordCreate.current.value,
+          username.current.value
         );
         handleClickNavigate();
       }
