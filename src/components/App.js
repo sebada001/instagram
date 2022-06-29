@@ -10,14 +10,6 @@ function App() {
   const [userLogged, setUserLogged] = useState(false);
   const [userUid, setUserUid] = useState(undefined);
   const [userAnon, setUserAnon] = useState(false);
-  let authCheck = () =>
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        handleLogIn(user);
-      } else {
-        handleLogIn();
-      }
-    });
   const handleLogIn = (user) => {
     if (user !== undefined) {
       setUserLogged(true);
@@ -29,7 +21,14 @@ function App() {
     }
   };
   useEffect(() => {
-    authCheck();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        handleLogIn(user);
+      } else {
+        handleLogIn();
+      }
+    });
+    return unsubscribe;
   });
   return (
     <div className="App">
