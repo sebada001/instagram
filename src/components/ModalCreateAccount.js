@@ -1,5 +1,9 @@
 import React, { forwardRef, useRef } from "react";
 import { auth, createUser } from "../firebase/auth";
+import {
+  checkValidEmail,
+  checkValidPassword,
+} from "../utilities/email-password-validity";
 import bottom from "../svg/bottom.svg";
 import top from "../svg/top.svg";
 
@@ -8,11 +12,9 @@ const ModalCreate = forwardRef((props, ref) => {
   const emailCreate = useRef();
   const modalCreate = ref;
   const { onClickCancel, handleClickNavigate } = props;
-
   const createAccountCheck = async () => {
     try {
       if (checkValidEmail(emailCreate) && checkValidPassword(passwordCreate)) {
-        console.log("ar");
         await createUser(
           auth,
           emailCreate.current.value,
@@ -24,28 +26,6 @@ const ModalCreate = forwardRef((props, ref) => {
       console.error(error);
     }
   };
-  const checkValidEmail = (inp) => {
-    let email = inp.current.value;
-    if (/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email)) {
-      //    \
-      inp.current.style.border = "";
-      return true;
-    } else {
-      inp.current.style.border = "1px red solid";
-      return false;
-    }
-  };
-  const checkValidPassword = (inp) => {
-    let password = inp.current.value;
-    if (/^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)) {
-      inp.current.style.border = "";
-      return true;
-    } else {
-      inp.current.style.border = "1px red solid";
-      return false;
-    }
-  };
-
   return (
     <div className="modal-create" ref={modalCreate}>
       <img src={top} className="top-modal" alt="top" />
