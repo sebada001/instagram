@@ -7,4 +7,25 @@
 }
 .profile-area{
     margin-top: 40px;
+    display: flex;
+}
+#profile-pic-side{
+    max-height: 100%;
+    position: absolute;
+    left: -20px;
+}
+#pic-container-side{
+    position: relative;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 1px 4px 0px rgb(178, 178, 178);
+}
+.profile-area p{
+    height: 75px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
 }

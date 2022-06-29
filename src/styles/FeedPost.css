@@ -26,6 +26,18 @@
 #feed-post > img{
     position: absolute;
 }
+#feed-post .top{
+    top: 1px;
+}
+#feed-post .bottom{
+    bottom: 10px;
+}
+#feed-post .right{
+    right: 6px;
+}
+#feed-post .inner-bottom{
+    bottom: -6px;
+}
 .title-post{
     grid-area: h;
     background-color: rgb(249, 245, 245);
@@ -58,8 +70,6 @@
      justify-content: center;
 }
 .sonic{
-    /* position: absolute;
-    left: -20px; */
     height: 70px; 
 }
 .image-post{

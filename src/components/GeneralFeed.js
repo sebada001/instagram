@@ -7,9 +7,7 @@ const GeneralFeed = function () {
       <div className="feed-area">
         <FeedPost />
       </div>
-      <div>
-        <ProfileArea />
-      </div>
+      <ProfileArea />
     </div>
   );
 };
