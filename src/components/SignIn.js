@@ -46,14 +46,14 @@ function SignIn(props) {
         <img src={bottom} className="inner-bottom-si" alt="inner-bottom" />
         <img src={top} className="inner-bottom-2-si" alt="inner-bottom-2" />
 
-        <div className="sign-in-anonymous" onClick={handleClickAnon}>
-          <span>Sign in anonymously</span>
+        <div className="sign-in-anonymous">
+          <span onClick={handleClickAnon}>Sign in anonymously</span>
         </div>
-        <div className="sign-in-email" onClick={onSignIn}>
-          <span>Sign in email</span>
+        <div className="sign-in-email">
+          <span onClick={onSignIn}>Sign in email</span>
         </div>
-        <div className="create-account" onClick={onCreateAcc}>
-          <span>Create account</span>
+        <div className="create-account">
+          <span onClick={onCreateAcc}>Create account</span>
         </div>
       </div>
 
@@ -69,7 +69,12 @@ function SignIn(props) {
           <button onClick={onClickCancel}>Cancel</button>
         </div>
       </div>
-      <ModalCreate {...props} ref={modalCreate} onClickCancel={onClickCancel} />
+      <ModalCreate
+        {...props}
+        ref={modalCreate}
+        onClickCancel={onClickCancel}
+        handleClickNavigate={handleClickNavigate}
+      />
 
       <div className="black-out" ref={blackOut}></div>
     </div>

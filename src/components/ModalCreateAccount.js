@@ -11,7 +11,8 @@ const ModalCreate = forwardRef((props, ref) => {
 
   const createAccountCheck = async () => {
     try {
-      if (checkValidEmail() && checkValidPassword()) {
+      if (checkValidEmail(emailCreate) && checkValidPassword(passwordCreate)) {
+        console.log("ar");
         await createUser(
           auth,
           emailCreate.current.value,
@@ -35,7 +36,7 @@ const ModalCreate = forwardRef((props, ref) => {
     }
   };
   const checkValidPassword = (inp) => {
-    let password = inp;
+    let password = inp.current.value;
     if (/^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)) {
       inp.current.style.border = "";
       return true;
@@ -54,8 +55,8 @@ const ModalCreate = forwardRef((props, ref) => {
         type="text"
         id="email-create"
         placeholder="abc@cba.com"
-        onBlur={() => checkValidEmail(emailCreate)}
         ref={emailCreate}
+        onBlur={() => checkValidEmail(emailCreate)}
       ></input>
       <label>Password:</label>
       <input
