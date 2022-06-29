@@ -78,7 +78,7 @@
   #square-sign-in span:hover{
     color: rgb(81, 81, 225);
   }
-  .modal, .modal-create{
+  .modal-sign-in, .modal-create{
     position: absolute;
     z-index: 13;
     width: 300px;
@@ -91,22 +91,22 @@
     justify-content: center;
     gap: 1rem;
   }
-  .modal input, .modal-create input{
+  .modal-sign-in input, .modal-create input{
     border: none;
     padding: 2px;
     text-align: center;
   }
-  .modal input:focus, .modal-create input:focus{
+  .modal-sign-in input:focus, .modal-create input:focus{
     outline: none;
     border: 1px solid;
     border-color: black !important;
   }
-  .modal button, .modal-create button{
+  .modal-sign-in button, .modal-create button{
     margin: 0.4rem;
     border: none;
     background: none;
   }
-  .modal button:hover, .modal-create button:hover{
+  .modal-sign-in button:hover, .modal-create button:hover{
     cursor: url("../img/cursor-pointer.jpg") 0 10, pointer;
     background: none;
     transform: scale(1.1);

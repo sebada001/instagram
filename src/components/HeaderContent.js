@@ -1,4 +1,4 @@
-import { auth, signMeOut } from "../firebase/auth";
+import { signMeOut } from "../firebase/auth";
 
 function HeaderContent(props) {
   const { userLogged, navigateOut } = props;
