@@ -1,6 +1,6 @@
 .general-body{
     width: 100%;
-    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
     display: flex;
     justify-content: center;
     gap: 60px;
