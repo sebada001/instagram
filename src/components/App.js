@@ -35,6 +35,7 @@ function App() {
     });
     return unsubscribe;
   });
+
   return (
     <div className="App">
       <RouteSwitch
@@ -42,6 +43,7 @@ function App() {
         userUid={userUid}
         userAnon={userAnon}
         userName={userName}
+        handleLogIn={handleLogIn}
       />
     </div>
   );

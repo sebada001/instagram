@@ -1,5 +1,6 @@
 import React, { forwardRef, useRef } from "react";
 import { auth, createUser } from "../firebase/auth";
+import { updateProfile } from "firebase/auth";
 import {
   checkValidEmail,
   checkValidPassword,
@@ -13,7 +14,7 @@ const ModalCreate = forwardRef((props, ref) => {
   const emailCreate = useRef();
   const username = useRef();
   const modalCreate = ref;
-  const { onClickCancel, handleClickNavigate } = props;
+  const { onClickCancel, handleClickNavigate, handleLogIn } = props;
   const createAccountCheck = async () => {
     try {
       if (
@@ -27,6 +28,11 @@ const ModalCreate = forwardRef((props, ref) => {
           passwordCreate.current.value,
           username.current.value
         );
+        await updateProfile(auth.currentUser, {
+          displayName: username.current.value,
+        });
+        console.log("userNameUpdated");
+        handleLogIn(auth.currentUser);
         handleClickNavigate();
       }
     } catch (error) {

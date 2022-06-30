@@ -4,8 +4,7 @@ import { auth } from "../firebase/auth";
 const ProfileArea = function (props) {
   const { userName, userUid } = props;
   const handleClickUser = () => {
-    console.log(userUid);
-    console.log(auth.currentUser);
+    console.log(userName);
   };
   return (
     <div className="profile-area">

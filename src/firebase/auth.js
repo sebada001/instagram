@@ -6,17 +6,21 @@ import {
   signInAnonymously,
   signOut,
   updateProfile,
+  reload,
 } from "firebase/auth";
 
 const auth = getAuth(app);
 
 const createUser = (auth, email, password, username) =>
-  createUserWithEmailAndPassword(auth, email, password)
+  createUserWithEmailAndPassword(auth, email, password, username)
     .then((userCredential) => {
       const user = userCredential.user;
-      updateProfile(user, {
-        displayName: username,
-      });
+      // updateProfile(user, {
+      //   displayName: username,
+      // }).then(() => {
+      //   user.reload();
+      //   console.log("userCreated");
+      // });
       console.log("userCreated");
     })
     .catch((error) => {
