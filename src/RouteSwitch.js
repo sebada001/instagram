@@ -1,6 +1,6 @@
 import SignIn from "./components/SignIn";
 import GeneralFeed from "./components/GeneralFeed";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Header from "./components/Header";
 
 const RouteSwitch = (props) => {

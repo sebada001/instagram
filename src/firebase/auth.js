@@ -5,8 +5,6 @@ import {
   signInWithEmailAndPassword,
   signInAnonymously,
   signOut,
-  updateProfile,
-  reload,
 } from "firebase/auth";
 
 const auth = getAuth(app);

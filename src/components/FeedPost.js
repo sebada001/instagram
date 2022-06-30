@@ -6,6 +6,11 @@ import circle from "../svg/circle.svg";
 import pic from "../img/sc.jpg";
 import opm from "../img/opm.png";
 
+const postImage =
+  "https://firebasestorage.googleapis.com/v0/b/instagram-clone-2a893.appspot.com/o/testingimage.jpg?alt=media&token=0d66dd18-63df-4ff8-bfb5-18b0a9330cc8";
+const postProfileImage =
+  "https://firebasestorage.googleapis.com/v0/b/instagram-clone-2a893.appspot.com/o/no-user-pic.png?alt=media&token=8b751397-f2d5-4354-b44b-75ad01c1bef9";
+
 function FeedPost() {
   return (
     <div className="Post">
@@ -18,12 +23,12 @@ function FeedPost() {
         <div className="title-post">
           <img src={circle} className="circle" alt="circle" />
           <div className="profile-container">
-            <img src={pic} className="sonic" alt="sonic" />
+            <img src={postProfileImage} className="sonic" alt="sonic" />
           </div>
           <h3>User - Title</h3>
         </div>
         <div className="image-post">
-          <img src={opm} className="opm" alt="opm" />
+          <img src={postImage} className="opm" alt="opm" />
         </div>
       </div>
     </div>
