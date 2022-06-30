@@ -57,6 +57,7 @@ function SignIn(props) {
         </div>
       </div>
       <ModalSignIn
+        {...props}
         ref={modal}
         onClickCancel={onClickCancel}
         handleClickNavigate={handleClickNavigate}

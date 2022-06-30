@@ -6,9 +6,10 @@ import {
   checkValidPassword,
 } from "../utilities/email-password-validity";
 import { auth, signIn } from "../firebase/auth";
+import { updateProfile } from "firebase/auth";
 
 const ModalSignIn = forwardRef((props, ref) => {
-  const { onClickCancel, handleClickNavigate } = props;
+  const { onClickCancel, handleClickNavigate, handleLogIn } = props;
   const modal = ref;
   const emailSignIn = useRef();
   const passwordSignIn = useRef();
@@ -21,6 +22,11 @@ const ModalSignIn = forwardRef((props, ref) => {
           emailSignIn.current.value,
           passwordSignIn.current.value
         );
+        await updateProfile(auth.currentUser, {
+          displayName: auth.currentUser.displayName,
+        });
+        console.log("userNameUpdated");
+        handleLogIn(auth.currentUser);
         handleClickNavigate();
       } else {
         alert("try again");

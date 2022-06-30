@@ -11,8 +11,8 @@ import {
 
 const auth = getAuth(app);
 
-const createUser = (auth, email, password, username) =>
-  createUserWithEmailAndPassword(auth, email, password, username)
+const createUser = (auth, email, password) =>
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       // updateProfile(user, {
