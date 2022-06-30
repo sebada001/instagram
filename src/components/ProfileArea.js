@@ -1,5 +1,6 @@
 import pic from "../img/sc.jpg";
 import { auth } from "../firebase/auth";
+import { createPost, getPosts } from "../firebase/firestore";
 
 const ProfileArea = function (props) {
   const { userName, userUid } = props;
