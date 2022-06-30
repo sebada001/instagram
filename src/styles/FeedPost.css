@@ -11,16 +11,16 @@
     margin-top: 40px;
     position: relative;
     display: flex;
-    height: 450px;
-    width: 300px;
+    height: 600px;
+    width: 450px;
     display: grid;
     grid-template-areas: 
     "t t t"
     "l h r"
     "l c r"
     "b b b";
-    grid-template-columns: 5px 280px 5px;
-    grid-template-rows: 5px 95px 335px 5px;
+    grid-template-columns: 5px 425px 5px;
+    grid-template-rows: 5px 130px 450px 5px;
     overflow: hidden;
 }
 #feed-post > img{
@@ -30,13 +30,14 @@
     top: 1px;
 }
 #feed-post .bottom{
-    bottom: 10px;
+    bottom: 8px;
 }
 #feed-post .right{
-    right: 6px;
+    right: 8px;
 }
 #feed-post .inner-bottom{
-    bottom: -6px;
+    bottom: -10px;
+    width: 590px;
 }
 .title-post{
     grid-area: h;
@@ -67,7 +68,7 @@
     overflow: hidden;
     display: flex; 
     align-items: center;
-     justify-content: center;
+    justify-content: center;
 }
 .sonic{
     height: 70px; 
@@ -80,6 +81,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 3px;
 }
 .opm{
     background-origin: content-box;
