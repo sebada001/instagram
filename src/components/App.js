@@ -19,7 +19,11 @@ function App() {
       setUserLogged(true);
       setUserUid(user.uid);
       setUserAnon(user.isAnonymous);
-      setUserName(user.displayName);
+      if (user.displayName) {
+        setUserName(user.displayName);
+      } else {
+        setUserName("anon");
+      }
     } else {
       setUserLogged(false);
       setUserUid(undefined);

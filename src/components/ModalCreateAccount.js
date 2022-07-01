@@ -8,8 +8,10 @@ import {
 } from "../utilities/email-password-validity";
 import bottom from "../svg/bottom.svg";
 import top from "../svg/top.svg";
-//
+
 const ModalCreate = forwardRef((props, ref) => {
+  const noUserPictureUrl =
+    "https://firebasestorage.googleapis.com/v0/b/instagram-clone-2a893.appspot.com/o/no-user-pic.png?alt=media&token=8b751397-f2d5-4354-b44b-75ad01c1bef9";
   const passwordCreate = useRef();
   const emailCreate = useRef();
   const username = useRef();
@@ -65,6 +67,18 @@ const ModalCreate = forwardRef((props, ref) => {
         ref={passwordCreate}
         onClick={() => checkValidPassword(passwordCreate)}
       ></input>
+      <label>Profile Picture:</label>
+      <div id="profile-pic-create-acc-container">
+        <img
+          src={noUserPictureUrl}
+          alt="no user profile picture"
+          id="profile-pic-create-acc"
+        ></img>
+      </div>
+      <label for="input-file" id="input-file-button">
+        Upload...
+      </label>
+      <input id="input-file" type="file" accept="image/*"></input>
       <div>
         <button onClick={createAccountCheck}>Create Account</button>
         <button onClick={() => onClickCancel(modalCreate)}>Cancel</button>
