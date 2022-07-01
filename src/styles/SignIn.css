@@ -135,12 +135,12 @@
     width: 310px;
   }
   
-#profile-pic-create-acc{
+#profile-preview{
     max-height: 100%;
     position: absolute;
     left: 0px;
 }
-#profile-pic-create-acc-container{
+#profile-preview-container{
     position: relative;
     width: 75px;
     height: 75px;

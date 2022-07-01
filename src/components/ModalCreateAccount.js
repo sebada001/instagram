@@ -15,8 +15,27 @@ const ModalCreate = forwardRef((props, ref) => {
   const passwordCreate = useRef();
   const emailCreate = useRef();
   const username = useRef();
+  const profilePreview = useRef();
   const modalCreate = ref;
   const { onClickCancel, handleClickNavigate, handleLogIn } = props;
+  const updatePreview = async (e) => {
+    const curFiles = e.target.files;
+    if (curFiles.length == 0) {
+      return;
+    }
+    const img = curFiles[0];
+    console.log(img);
+    //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
+    //currently implementing...
+    //to do:
+    //validate this image (size not too big, correct file format)
+    //upload to storage in cloud
+    //set as user's profileImage
+    //create state of profile image in App, this depends on user profileImage
+    //image should show to the side
+
+    profilePreview.current.src = URL.createObjectURL(img);
+  };
   const createAccountCheck = async () => {
     try {
       if (
@@ -68,17 +87,23 @@ const ModalCreate = forwardRef((props, ref) => {
         onClick={() => checkValidPassword(passwordCreate)}
       ></input>
       <label>Profile Picture:</label>
-      <div id="profile-pic-create-acc-container">
+      <div id="profile-preview-container">
         <img
+          ref={profilePreview}
           src={noUserPictureUrl}
           alt="no user profile picture"
-          id="profile-pic-create-acc"
+          id="profile-preview"
         ></img>
       </div>
       <label for="input-file" id="input-file-button">
         Upload...
       </label>
-      <input id="input-file" type="file" accept="image/*"></input>
+      <input
+        onChange={updatePreview}
+        id="input-file"
+        type="file"
+        accept="image/*"
+      ></input>
       <div>
         <button onClick={createAccountCheck}>Create Account</button>
         <button onClick={() => onClickCancel(modalCreate)}>Cancel</button>
