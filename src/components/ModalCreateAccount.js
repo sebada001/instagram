@@ -1,13 +1,17 @@
 import React, { forwardRef, useRef } from "react";
 import { auth, createUser } from "../firebase/auth";
 import { updateProfile } from "firebase/auth";
+import bottom from "../svg/bottom.svg";
+import top from "../svg/top.svg";
+import {
+  validFileSize,
+  validFileType,
+} from "../utilities/image-upload-validity";
 import {
   checkValidEmail,
   checkValidPassword,
   checkValidUserName,
 } from "../utilities/email-password-validity";
-import bottom from "../svg/bottom.svg";
-import top from "../svg/top.svg";
 
 const ModalCreate = forwardRef((props, ref) => {
   const noUserPictureUrl =
@@ -18,17 +22,41 @@ const ModalCreate = forwardRef((props, ref) => {
   const profilePreview = useRef();
   const modalCreate = ref;
   const { onClickCancel, handleClickNavigate, handleLogIn } = props;
+  const movePicture = (direction) => {
+    let curr = parseInt(profilePreview.current.style.left.split("p")[0]);
+    console.log(curr);
+    if (direction === "L") {
+      !Number.isNaN(curr)
+        ? (profilePreview.current.style.left =
+            parseInt(profilePreview.current.style.left.split("p")[0]) -
+            5 +
+            "px")
+        : (profilePreview.current.style.left = "-10px");
+    }
+    if (direction === "R") {
+      !Number.isNaN(curr)
+        ? (profilePreview.current.style.left =
+            parseInt(profilePreview.current.style.left.split("p")[0]) +
+            5 +
+            "px")
+        : (profilePreview.current.style.left = "10px");
+    }
+  };
   const updatePreview = async (e) => {
     const curFiles = e.target.files;
-    if (curFiles.length == 0) {
+    if (curFiles.length === 0) {
       return;
     }
     const img = curFiles[0];
+    if (!validFileSize(img) || !validFileType(img)) {
+      alert("please choose an image && under 3mb");
+      return;
+    }
     console.log(img);
     //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
     //currently implementing...
     //to do:
-    //validate this image (size not too big, correct file format)
+    //validate this image (size not too big, correct file format) // mostly done
     //upload to storage in cloud
     //set as user's profileImage
     //create state of profile image in App, this depends on user profileImage
@@ -91,11 +119,20 @@ const ModalCreate = forwardRef((props, ref) => {
         <img
           ref={profilePreview}
           src={noUserPictureUrl}
-          alt="no user profile picture"
+          alt="no user profile"
           id="profile-preview"
         ></img>
       </div>
-      <label for="input-file" id="input-file-button">
+      <div className="move-pic-container">
+        <div className="move-pic-left" onClick={() => movePicture("L")}>
+          L
+        </div>
+        <div className="move-pic-right" onClick={() => movePicture("R")}>
+          R
+        </div>
+      </div>
+
+      <label htmlFor="input-file" id="input-file-button">
         Upload...
       </label>
       <input
