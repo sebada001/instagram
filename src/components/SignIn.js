@@ -5,26 +5,32 @@ import top from "../svg/top.svg";
 import { useNavigate } from "react-router-dom";
 import ModalCreate from "./ModalCreateAccount";
 import ModalSignIn from "./ModalSignIn";
+import { ProfilePicture, currentImage, imageLeft } from "./ProfilePicture";
 
 function SignIn(props) {
+  const finalStep = useRef();
   const modal = useRef();
   const blackOut = useRef();
   const modalCreate = useRef();
   const navigate = useNavigate();
 
+  const next = () => {
+    finalStep.current.style.display = "none";
+    modalCreate.current.style.display = "flex";
+  };
   const onClickCancel = () => {
     modalCreate.current.style.display = "none";
     blackOut.current.style.display = "none";
     modal.current.style.display = "none";
+    finalStep.current.style.display = "none";
   };
   const onSignIn = () => {
     modal.current.style.display = "flex";
     blackOut.current.style.display = "flex";
   };
   const onCreateAcc = () => {
-    modalCreate.current.style.display = "flex";
+    finalStep.current.style.display = "flex";
     blackOut.current.style.display = "flex";
-    modal.current.style.display = "flex";
   };
 
   const handleClickNavigate = useCallback(
@@ -68,6 +74,17 @@ function SignIn(props) {
         onClickCancel={onClickCancel}
         handleClickNavigate={handleClickNavigate}
       />
+      <div
+        className="profile-pic-create"
+        ref={finalStep}
+        style={{ display: "none" }}
+      >
+        <ProfilePicture />
+        <div className="create-final-buttons">
+          <button onClick={() => onClickCancel(modalCreate)}>Cancel</button>
+          <button onClick={next}>Next</button>
+        </div>
+      </div>
       <div className="black-out" ref={blackOut}></div>
     </div>
   );

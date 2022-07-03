@@ -78,7 +78,7 @@
   #square-sign-in span:hover{
     color: rgb(81, 81, 225);
   }
-  .modal-sign-in, .modal-create{
+  .modal-sign-in, .modal-create {
     position: absolute;
     z-index: 13;
     width: 300px;
@@ -104,12 +104,12 @@
     border: 1px solid;
     border-color: black !important;
   }
-  .modal-sign-in button, .modal-create button{
+  .modal-sign-in button, .modal-create button, .create-final-buttons button{
     margin: 0.4rem;
     border: none;
     background: none;
   }
-  .modal-sign-in button:hover, .modal-create button:hover{
+  .modal-sign-in button:hover, .modal-create button:hover, .create-final-buttons button:hover{
     cursor: url("../img/cursor-pointer.jpg") 0 10, pointer;
     background: none;
     transform: scale(1.1);
@@ -134,20 +134,39 @@
     bottom: -4px;
     width: 310px;
   }
-  
+
+.profile-pic-create{
+  position: absolute;
+  z-index: 235;
+  width: 300px;
+  min-height: 350px;
+  top: 40px;
+  background-color:#f0ecec;
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.profile-pic-create > .inner-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 #profile-preview{
-    max-height: 100%;
-    position: absolute;
-    left: 0px;
+  max-height: 100%;
+  position: absolute;
+  left: 0px;
 }
 #profile-preview-container{
-    position: relative;
-    width: 75px;
-    height: 75px;
-    display: flex;
-    overflow: hidden;
-    border-radius: 50%;
-    background-color: white;
+  position: relative;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: white;
 }
 #input-file{
   overflow: hidden;
@@ -167,9 +186,14 @@
 }
 .move-pic-container{
   display: flex;
-  height: 20px;
+  height: 60px;
   gap: 0 50px;
 }
 .move-pic-left:hover, .move-pic-right:hover{
   cursor: url("../img/cursor-pointer.jpg") 0 10, pointer;
+}
+.create-final-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
