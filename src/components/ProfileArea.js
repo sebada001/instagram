@@ -1,19 +1,15 @@
-import pic from "../img/sc.jpg";
-import { auth } from "../firebase/auth";
-import { createPost, getPosts } from "../firebase/firestore";
-
 const ProfileArea = function (props) {
-  const { userName, userUid } = props;
+  const { userName, userPicture } = props;
   const handleClickUser = () => {
-    console.log(userName);
+    console.log(userPicture);
   };
   return (
     <div className="profile-area">
       <div id="pic-container-side">
         <img
-          src={pic}
+          src={userPicture}
           id="profile-pic-side"
-          alt="profile picture"
+          alt="user profile"
           onClick={handleClickUser}
         ></img>
       </div>

@@ -37,10 +37,9 @@ function ProfilePicture() {
       alert("please choose an image && under 3mb");
       return;
     }
-    console.log(img);
     let url = URL.createObjectURL(img);
     profilePreview.current.src = url;
-    currentImage = url;
+    currentImage = img;
     imageLeft = profilePreview.current.style.left;
   };
   return (

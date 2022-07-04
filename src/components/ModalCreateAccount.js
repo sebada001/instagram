@@ -3,40 +3,40 @@ import { auth, createUser } from "../firebase/auth";
 import { updateProfile } from "firebase/auth";
 import bottom from "../svg/bottom.svg";
 import top from "../svg/top.svg";
-import { currentImage, imageLeft } from "./ProfilePicture";
-
+import { currentImage } from "./ProfilePicture";
+import { uploadProfilePic } from "../firebase/storage";
 import {
   checkValidEmail,
   checkValidPassword,
   checkValidUserName,
 } from "../utilities/email-password-validity";
 
+//const uploadProfilePic = async (file, currentUser, setLoading)
+
 const ModalCreate = forwardRef((props, ref) => {
   const passwordCreate = useRef();
   const emailCreate = useRef();
   const username = useRef();
-
   const modalCreate = ref;
   const { onClickCancel, handleClickNavigate, handleLogIn } = props;
   const storeData = {};
   //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
-  //currently implementing...
-  //to do:
-  //upload to storage in cloud
-  //set as user's profileImage
-  //create state of profile image in App, this depends on user profileImage
-  //image should show to the side
   const createAccount = async () => {
     try {
       await createUser(
         storeData.auth,
         storeData.emailCreate,
-        storeData.current.value
+        storeData.passwordCreate
       );
       await updateProfile(auth.currentUser, {
         displayName: username.current.value,
       });
       console.log("userNameUpdated");
+      if (currentImage !== undefined) {
+        const file = document.querySelector("#input-file").files[0];
+        await uploadProfilePic(file, auth.currentUser);
+        console.log("profile picture pploaded");
+      }
       handleLogIn(auth.currentUser);
       handleClickNavigate();
     } catch (error) {

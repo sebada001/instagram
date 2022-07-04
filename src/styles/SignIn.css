@@ -177,7 +177,6 @@
 #input-file-button{
   background-color: white;
   padding: 0.2em 0.6em;
-  margin-top: 20px;
 }
 #input-file-button:hover{
   cursor: url("../img/cursor-pointer.jpg") 0 10, pointer;

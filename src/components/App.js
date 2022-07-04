@@ -13,6 +13,7 @@ function App() {
   const [userUid, setUserUid] = useState(undefined);
   const [userAnon, setUserAnon] = useState(false);
   const [userName, setUserName] = useState(undefined);
+  const [userPicture, setUserPicture] = useState();
 
   const handleLogIn = (user) => {
     if (user) {
@@ -23,6 +24,9 @@ function App() {
         setUserName(user.displayName);
       } else {
         setUserName("anon");
+      }
+      if (user.photoURL) {
+        setUserPicture(user.photoURL);
       }
     } else {
       setUserLogged(false);
@@ -48,6 +52,8 @@ function App() {
         userAnon={userAnon}
         userName={userName}
         handleLogIn={handleLogIn}
+        setUserPicture={setUserPicture}
+        userPicture={userPicture}
       />
     </div>
   );

@@ -5,7 +5,7 @@ import top from "../svg/top.svg";
 import { useNavigate } from "react-router-dom";
 import ModalCreate from "./ModalCreateAccount";
 import ModalSignIn from "./ModalSignIn";
-import { ProfilePicture, currentImage, imageLeft } from "./ProfilePicture";
+import { ProfilePicture } from "./ProfilePicture";
 
 function SignIn(props) {
   const finalStep = useRef();
