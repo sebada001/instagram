@@ -11,8 +11,6 @@ import {
   checkValidUserName,
 } from "../utilities/email-password-validity";
 
-//const uploadProfilePic = async (file, currentUser, setLoading)
-
 const ModalCreate = forwardRef((props, ref) => {
   const passwordCreate = useRef();
   const emailCreate = useRef();

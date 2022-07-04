@@ -11,8 +11,7 @@ const uploadProfilePic = async (file, currentUser, setLoading) => {
     //   setLoading(true);
     const snapshot = await uploadBytes(fileRef, file);
     let photoURL = await getDownloadURL(snapshot.ref);
-    console.log(photoURL);
-    updateProfile(currentUser, { photoURL });
+    await updateProfile(currentUser, { photoURL });
     //   setLoading(false);
   } catch (error) {
     console.log(error);
